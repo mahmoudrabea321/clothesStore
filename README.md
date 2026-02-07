@@ -1,4 +1,4 @@
-# 🛒 NewStore2 – Full‑Stack E‑Commerce Application
+# 🛒 -store – Full‑Stack E‑Commerce Application
 
 A modern **full‑stack e‑commerce web application** built with **React, Zustand, Node.js, Express, MongoDB, and Stripe**. The project supports authentication, product management, cart & checkout flow, Stripe payments, and user profiles with order history.
 
@@ -28,7 +28,7 @@ A modern **full‑stack e‑commerce web application** built with **React, Zusta
 
 * Add products to cart
 * Increase / decrease quantity
-* Remove items
+* Rem+ove items
 * Cart persistence (stored in database)
 * Automatic cart total & quantity calculation
 
