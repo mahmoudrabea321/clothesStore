@@ -38,8 +38,8 @@ export const createCheckoutSession = async (req, res) => {
       payment_method_types: ["card"],
       mode: "payment",
       line_items: lineItems,
-      success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      success_url: `/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `/cancel`,
       metadata: {
         user: user.toString(),
       },
@@ -78,25 +78,25 @@ export const checkoutSuccess = async (req, res) => {
       return res.status(400).json({ message: "Session ID missing" });
     }
 
-    // ✅ 1. Ask Stripe if payment is real
+    //  1. Ask Stripe if payment is real
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status !== "paid") {
       return res.status(401).json({ message: "Payment not completed" });
     }
 
-    // ✅ 2. Get logged-in user
+    //  2. Get logged-in user
     const user = await User.findById(req.user._id);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // ✅ 3. Clear cart in DB
+    //  3. Clear cart in DB
     user.cartItems = [];
     await user.save();
 
-    // ✅ 4. Update order status (if you have orders)
+    //  4. Update order status (if you have orders)
     await Order.findOneAndUpdate(
       { stripeSessionId: session.id },
       { status: "PAID" }
