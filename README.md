@@ -1,4 +1,4 @@
-# 🛒 -store – Full‑Stack E‑Commerce Application
+/# 🛒 -store – Full‑Stack E‑Commerce Application
 
 A modern **full‑stack e‑commerce web application** built with **React, Zustand, Node.js, Express, MongoDB, and Stripe**. The project supports authentication, product management, cart & checkout flow, Stripe payments, and user profiles with order history.
 
@@ -146,5 +146,3 @@ CVC: Any 3 digits
 Full‑Stack Developer
 
 ---
-
-Give it a star ⭐ and feel free to contribute!
