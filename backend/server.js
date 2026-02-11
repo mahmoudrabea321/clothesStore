@@ -10,6 +10,7 @@ import cors from "cors";
 import Payment from "./route/payment.route.js";
 import profile from "./route/profile.route.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
@@ -17,7 +18,8 @@ const app = express();
 
 connectDB();
 
-const dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ extended: true, limit: "20mb" }));
@@ -35,9 +37,12 @@ app.use('/api/coupon', coupon);
 app.use('/api/payment',Payment)
 app.use('/api/profile',profile)
 
-app.use(express.static(path.join(dirname, "frontend", "dist")));
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+const frontendPath = path.join(__dirname, "..", "frontend", "dist");
+
+app.use(express.static(frontendPath));
+
+app.get("/{*any}", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 
