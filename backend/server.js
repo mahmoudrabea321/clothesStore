@@ -26,9 +26,9 @@ app.use(express.urlencoded({ extended: true, limit: "20mb" }));
 app.use(cookieParser()); 
 app.use(
   cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true,
-})
+    origin:true,
+    credentials: true,
+  })
 );
 app.use('/api/auth', AuthRoute);
 app.use('/api/products',Product);

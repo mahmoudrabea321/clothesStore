@@ -7,7 +7,7 @@ const route = express.Router();
 route.post('/signup',signup);
 route.post('/login',login);
 route.post('/logout',logout);
-route.get("/me",  getMe);
+route.get("/me", protectRoute, getMe);
 
 
 export default route
