@@ -11,7 +11,7 @@ const Signup = () => {
     password: "",
   });
 
-  const { signup } = useUserStore();
+  const { signup , checkAuth } = useUserStore();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +29,7 @@ const Signup = () => {
   try {
     await signup(formData);
     toast.success("Account created!");
+    await checkAuth();
   } catch (error) {
     toast.error(error.response?.data?.message || "Signup failed");
   }
