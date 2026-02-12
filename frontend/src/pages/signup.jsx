@@ -22,7 +22,7 @@ const Signup = () => {
   e.preventDefault();
 
   if (formData.password.length < 6) {
-    window.alert("Password must be at least 6 characters");
+    toast.error("Password must be at least 6 characters");
     return;
   }
 

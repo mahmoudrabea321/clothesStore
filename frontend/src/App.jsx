@@ -11,6 +11,7 @@ import PurchaseCancel from "./pages/PurchaseCancel.jsx";
 import Logout from "./pages/logout.jsx";
 import useUserStore from "./lib/useUserStore.jsx";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { user, isAuthenticated } = useUserStore();
@@ -27,7 +28,8 @@ function App() {
         </div>
       </div>
 
-        <Navbar />
+      <Navbar />
+      <Toaster position="top-right" />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
