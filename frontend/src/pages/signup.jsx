@@ -11,7 +11,6 @@ const Signup = () => {
     password: "",
   });
 
-  const { signup } = useUserStore();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +33,9 @@ const Signup = () => {
   }
 };
 
+
+
+  const { signup } = useUserStore();
 
   return (
     <div className="min-h-screen flex items-center justify-center">
