@@ -29,7 +29,7 @@ function App() {
       </div>
 
       <Navbar />
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
