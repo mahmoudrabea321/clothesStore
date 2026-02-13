@@ -23,7 +23,7 @@ const login = () => {
     e.preventDefault();
     
     if (!formData.email || !formData.password) {
-      toast.error("Email and password are required");
+      window.alert("Email and password are required");
       return;
     }
     console.log(formData);
