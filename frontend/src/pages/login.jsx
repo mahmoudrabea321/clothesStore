@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 import useUserStore from "../lib/useUserStore.jsx";
-
+import toast from "react-hot-toast"; 
 
 const login = () => {
   const [formData, setFormData] = useState({
@@ -22,8 +22,10 @@ const login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if(formtData.password !=== password)
-      toast.error("the the email or password is inavalid")
+    if (!formData.email || !formData.password) {
+      toast.error("Email and password are required");
+      return;
+    }
     console.log(formData);
     login(formData);
   };
