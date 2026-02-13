@@ -11,18 +11,23 @@ const login = () => {
     password: "",
   });
 
+  const { login } = useUserStore();
+
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if(formtData.password !=== password)
+      toast.error("the the email or password is inavalid")
     console.log(formData);
     login(formData);
   };
 
-  const { login } = useUserStore();
 
   return (
     <div className="min-h-screen flex items-center justify-center">
