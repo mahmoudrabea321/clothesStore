@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 import useUserStore from "../lib/useUserStore.jsx";
-import toast from "react-hot-toast"; 
+import {toast} from 'react-hot-toast';
 
 const login = () => {
   const [formData, setFormData] = useState({
