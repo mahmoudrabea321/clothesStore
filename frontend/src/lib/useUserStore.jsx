@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "./axios.jsx";
+import { toast } from "react-hot-toast";
 
 axios.defaults.withCredentials = true;
 
@@ -19,13 +20,22 @@ const useUserStore = create((set) => ({
   },
 
   login: async ({ email, password }) => {
+  try {
     const res = await axios.post("/auth/login", {
       email,
       password,
     });
+
     set({ user: res.data.user, isAuthenticated: true });
+    toast.success("Login successful");
     return res.data.user;
-  },
+
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message || "Login failed"
+    );
+  }
+},
 
   logout: async () => {
     await axios.post("/auth/logout");

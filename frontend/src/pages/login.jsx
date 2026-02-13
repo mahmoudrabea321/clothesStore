@@ -19,22 +19,16 @@ const login = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password === "" || formData.email === "") {
-      toast.error("All fields are required");
-      return;
-      
-    }
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
-    }
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log(formData);
-    login(formData);
-  };
+  if (!formData.email || !formData.password) {
+    toast.error("All fields are required");
+    return;
+  }
 
+  await login(formData);
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center">
